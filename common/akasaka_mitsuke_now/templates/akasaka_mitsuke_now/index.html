@@ -1,6 +1,49 @@
 <html>
+<head>
+    <style type="text/css">
+        body { font-family: "メイリオ", sans-serif; }
+        table { 
+            min-width:90%;
+            background-color: #00467e;
+            color: white;
+        }
+        td {
+            text-align:center;
+        }
+        .colExplain {
+            font-size:70%;
+        }
+        .deptTime {
+            font-size:120%;
+            font-weight:bold;
+        }
+        .destination {
+            font-size:120%;
+            font-weight:bold;
+        }
+        .fontSmall{
+            font-size:70%;
+        }
+    </style>
+</head>
 <body>
-    <p>This is AMN template page.</p>
-    <p>{{ val }}</p>
+    <table>
+        <tr>
+            <td rowspan="2">
+                2 新宿方面<br>
+                　　for Shinjuku<br>
+                　<span class="fontSmall">時刻：{{ getTime }}</span></td>
+            <td><span></span></td>
+            <td class="colExplain"><span>時刻</span></td>
+            <td class="colExplain"><span>行き先</span></td>
+            <td class="colExplain"><span>備考</span></td>
+        </tr>
+        <tr>
+            <td><span class="order">先発</span></td>
+            <td><span class="deptTime">{{ deptTime }}</span></td>
+            <td><span class="destination">{{ destination }}</span></td>
+            <td><span class="note">{{ note }}</span></td>
+        </tr>
+    </table>
 </body>
 </html>
