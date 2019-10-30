@@ -1,0 +1,1 @@
+SECRET_API_KEY='[ここにAPIキーを入力する]'
