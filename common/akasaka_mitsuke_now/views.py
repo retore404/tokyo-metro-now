@@ -5,25 +5,25 @@ import requests
 
 def index(request):
     # settings.pyに設定したAPIキーの読み込み
-    apiKey = getattr(settings, "API_KEY", None)
-    
-    # 丸ノ内線走行中全列車の走行位置情報を取得
-    trainUrlRoot = 'https://api.tokyometroapp.jp/api/v2/datapoints'
-    
-    response = requests.get(
-        trainUrlRoot,
-        params = {'rdf:type': 'odpt:Train',
-                  'acl:consumerKey': apiKey,
-                  'odpt:railway': 'odpt.Railway:TokyoMetro.Marunouchi'}
-    )
-    
-    # レスポンスから荻窪方面・方南町方面（A線）の列車を抜き出し
-    data = response.json()
-    data = [train for train in data if train['odpt:railDirection'] == 'odpt.RailDirection:TokyoMetro.Ogikubo' or train['odpt:railDirection'] == 'odpt.RailDirection:TokyoMetro.Honancho']
-    
+    apiKey = getattr(settings, "API_KEY", None)    
+    urlRoot = 'https://api.tokyometroapp.jp/api/v2/datapoints'
 
-    for t in data:
-        print(t)
+    # 赤坂見附・A線の時刻表を取得
+    response = requests.get(
+        urlRoot,
+        params = {'rdf:type': 'odpt:StationTimetable',
+                  'acl:consumerKey': apiKey,
+                  'odpt:railway': 'odpt.Railway:TokyoMetro.Marunouchi',
+                  'odpt:station': 'odpt.Station:TokyoMetro.Marunouchi.AkasakaMitsuke',
+                  'odpt:railDirection': 'odpt.RailDirection:TokyoMetro.Ogikubo'}
+    )
+
+    data = response.json()
+
+    for d in data:
+        print(d)
+
+    
 
     return render(request, 'akasaka_mitsuke_now/index.html', {
         'deptTime': '19:14',
