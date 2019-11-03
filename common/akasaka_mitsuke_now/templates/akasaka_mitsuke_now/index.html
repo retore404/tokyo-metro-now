@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta http-equiv="refresh" content="60" >
+    <style type="text/css">
+        body { font-family: "メイリオ", sans-serif; }
+        table { 
+            min-width:90%;
+            background-color: #00467e;
+            color: white;
+        }
+        td {
+            text-align:center;
+        }
+        .colExplain {
+            font-size:70%;
+        }
+        .deptTime {
+            font-size:120%;
+            font-weight:bold;
+        }
+        .destination {
+            font-size:120%;
+            font-weight:bold;
+        }
+        .fontSmall {
+            font-size:70%;
+        }
+        .bgBlack {
+            background-color:black;
+        }
+        .first {
+            color: orange;
+        }
+        td {
+            border: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js" SameSite="Strict"></script>
+    <script type="text/javascript">
+        function initialize(){
+            // 駅ナンバリングと内容説明表示
+            let svg = d3.select("#wrapper").append("svg").attr("height", 50).attr("width", 500);
+            svg.append("circle").attr("cx", 25).attr("cy", 25).attr("r", 20).attr("fill", "#f62e36"); // 外丸
+            svg.append("circle").attr("cx", 25).attr("cy", 25).attr("r", 15).attr("fill", "white"); // 内丸
+            svg.append("text").attr("x", 25).attr("y", 25).text('M').attr("font-size", "8pt").style("text-anchor", "middle"); // 1行目
+            svg.append("text").attr("x", 25).attr("y", 35).text('13').attr("font-size", "10pt").style("text-anchor", "middle"); // 2行目
+            svg.append("text").attr("x", 55).attr("y", 33).text('丸ノ内線（A線）　赤坂見附駅出発案内（平日）').attr("font-size", "15pt"); // 説明文
+        }
+    </script>
+</head>
+<body onload="initialize();">
+    <div id="wrapper"></div>
+    <table>
+        <tr>
+            <td rowspan="4" style="width:20%">
+                2 新宿方面<br>
+                　　for Shinjuku<br>
+                　<span class="fontSmall">時刻　<span class=" bgBlack">{{ currentTime }}</span></span></td>
+            <td class="colExplain"><span>時刻</span></td>
+            <td class="colExplain"><span>行き先</span></td>
+            <td class="colExplain"><span>備考</span></td>
+        </tr>
+        <tr>
+            <td class="bgBlack"><span class="deptTime first">{{ deptTimeFirst }}</span></td>
+            <td class="bgBlack"><span class="destination first">{{ destinationFirst }}</span></td>
+            <td class="bgBlack"><span class="note">{{ noteFirst }}</span></td>
+        </tr>
+        <tr>
+            <td class="bgBlack"><span class="deptTime first">{{ deptTimeSecond }}</span></td>
+            <td class="bgBlack"><span class="destination first">{{ destinationSecond }}</span></td>
+            <td class="bgBlack"><span class="note">{{ noteSecond }}</span></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="bgBlack"><span>{{ notice }}</span></td>
+        </tr>
+    </table>
+</body>
+</html>
