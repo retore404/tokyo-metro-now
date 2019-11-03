@@ -12,6 +12,8 @@ def index(request):
 
     # 現在時刻の取得
     currentTime = datetime.datetime.now()
+    currentHour = ('0' + str(currentTime.hour))[-2:]
+    currentMinute = ('0' + str(currentTime.minute))[-2:]
 
     # 赤坂見附・A線の時刻表を取得
     response = requests.get(
@@ -45,7 +47,7 @@ def index(request):
         'deptTimeSecond': output[1][0],
         'destinationSecond': output[1][1],
         'noteSecond': output[1][2],
-        'currentTime': str(currentTime.hour) + ':' + str(currentTime.minute)
+        'currentTime': str(currentHour) + ':' +str(currentMinute)
     })
 
 def getStationName(odptStr):
