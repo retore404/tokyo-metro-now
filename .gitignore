@@ -1,5 +1,5 @@
 # APIキー隠匿
-settings_secret.py
+local_settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

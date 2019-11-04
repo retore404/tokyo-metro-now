@@ -7,7 +7,7 @@ import datetime
 def index(request):
 
     # settings.pyに設定したAPIキーの読み込み
-    apiKey = getattr(settings, "API_KEY", None)    
+    apiKey = getattr(settings, "SECRET_KEY", None)    
     urlRoot = 'https://api.tokyometroapp.jp/api/v2/datapoints'
 
     # 現在時刻の取得
