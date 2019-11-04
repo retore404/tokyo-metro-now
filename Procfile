@@ -1,1 +1,1 @@
-web: gunicorn common.common.wsgi --log-file -
+web: gunicorn --pythonpath common common.wsgi --log-file -
