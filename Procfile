@@ -1,1 +1,1 @@
-web: gunicorn --env DJANGO_SETTINGS_MODULE=common.settings common.wsgi --log-file -
+web: gunicorn common.common.wsgi --log-file -
