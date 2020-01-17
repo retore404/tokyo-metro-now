@@ -1,6 +1,9 @@
 # APIキー隠匿
 local_settings.py
 
+# pipenvでPythonのバージョン指定を外すため，Pipfile.lockを管理外とする
+Pipfile.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
